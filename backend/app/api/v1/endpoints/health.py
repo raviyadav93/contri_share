@@ -1,0 +1,13 @@
+"""Health check endpoints."""
+from fastapi import APIRouter
+
+router = APIRouter()
+
+
+@router.get("/health", tags=["health"])
+async def health_check() -> dict:
+    """Health check endpoint."""
+    return {
+        "status": "healthy",
+        "service": "contri_share-api"
+    }
