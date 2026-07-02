@@ -6,27 +6,27 @@ import './App.css'
 
 function App() {
   const [activeView, setActiveView] = useState('dashboard')
-  const [appStatus, setAppStatus] = useState('loading')
+  const [appStatus, setAppStatus] = useState('ready') // 'loading', 'ready', 'error'
 
-  useEffect(() => {
-    const checkHealth = async () => {
-      try {
-        const response = await fetch('/api/v1/health')
-        if (response.ok) {
-          setAppStatus('ready')
-        } else {
-          setAppStatus('error')
-        }
-      } catch (error) {
-        console.error('Health check failed:', error)
-        setAppStatus('error')
-      } finally {
-        setAppStatus('ready');
-      }
-    }
+  // useEffect(() => {
+  //   const checkHealth = async () => {
+  //     try {
+  //       const response = await fetch('/api/v1/health')
+  //       if (response.ok) {
+  //         setAppStatus('ready')
+  //       } else {
+  //         setAppStatus('error')
+  //       }
+  //     } catch (error) {
+  //       console.error('Health check failed:', error)
+  //       setAppStatus('error')
+  //     } finally {
+  //       setAppStatus('ready');
+  //     }
+  //   }
 
-    checkHealth()
-  }, [])
+  //   checkHealth()
+  // }, [])
 
   if (appStatus === 'loading') {
     return (
